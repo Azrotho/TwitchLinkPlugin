@@ -7,13 +7,13 @@ import com.github.philippheuer.credentialmanager.domain.OAuth2Credential;
 import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import com.github.twitch4j.pubsub.events.RewardRedeemedEvent;
-
 import fr.azrotho.twitchlink.utils.ConfigReaderUtil;
 import fr.azrotho.twitchlink.utils.OnChannelPoint;
 
 public class TwitchLink extends JavaPlugin {
     private static TwitchClient twitchClient;
     private static TwitchLink instance;
+    public static String tag = "§f§l[§5TwitchLink§f§l] §f";
 
     @Override
     public void onEnable() {
