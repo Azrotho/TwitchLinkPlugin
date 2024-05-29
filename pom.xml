@@ -45,6 +45,7 @@
             <groupId>com.github.twitch4j</groupId>
             <artifactId>twitch4j</artifactId>
             <version>1.20.0</version>
+            <scope>compile</scope>
         </dependency>
     </dependencies>
 </project>

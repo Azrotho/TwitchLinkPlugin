@@ -1,2 +1,5 @@
-credentials: "Credentials"
-channel_id_monitor: "id"
+client_id: "id"
+client_secret: "secret"
+channel_name: "channel"
+channel_id: "channel_id"
+oauth2: "oauth2"
