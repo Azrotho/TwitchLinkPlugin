@@ -1,6 +1,7 @@
 package fr.azrotho.twitchlink.utils;
 
 import org.bukkit.Bukkit;
+import org.bukkit.Sound;
 import org.bukkit.entity.Player;
 
 import com.github.twitch4j.pubsub.events.RewardRedeemedEvent;
@@ -21,6 +22,7 @@ public class OnChannelPoint {
             command = command.replace("%reward%", title);
             command = command.replace("%redeemerName%", username);
             CommandRunnable.commandsToRun.add(command);
+            player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1f, 1f);
         }
     }
 }
