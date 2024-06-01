@@ -2,3 +2,9 @@ name: TwitchLink
 author: Azrotho
 version: 1.0
 main: fr.azrotho.twitchlink.TwitchLink
+commands:
+  debug:
+    description: Debug command
+    usage: /<command> <args>
+    aliases:
+      - d

@@ -1,0 +1,2 @@
+Une_Baguette: "give %player% bread 1"
+Zombie: "execute at %player% run summon minecraft:zombie ~ ~ ~ {CustomName:'[{\"text\":\"%redeemerName%\"}]',CustomNameVisible:1b}"

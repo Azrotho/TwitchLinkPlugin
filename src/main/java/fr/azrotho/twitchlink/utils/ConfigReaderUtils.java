@@ -10,7 +10,7 @@ import org.bukkit.configuration.file.YamlConfiguration;
 
 import fr.azrotho.twitchlink.TwitchLink;
 
-public class ConfigReaderUtil {
+public class ConfigReaderUtils {
 
 
     public boolean checkIfConfigExist() {
