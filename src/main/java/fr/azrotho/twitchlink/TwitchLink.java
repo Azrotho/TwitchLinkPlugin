@@ -8,16 +8,19 @@ import com.github.twitch4j.TwitchClient;
 import com.github.twitch4j.TwitchClientBuilder;
 import com.github.twitch4j.pubsub.events.RewardRedeemedEvent;
 
-import fr.azrotho.twitchlink.Runnable.CommandRunnable;
 import fr.azrotho.twitchlink.commands.DebugCommand;
+import fr.azrotho.twitchlink.customrewards.CustomRewards;
 import fr.azrotho.twitchlink.utils.ChannelPointsRewardUtils;
 import fr.azrotho.twitchlink.utils.ConfigReaderUtils;
-import fr.azrotho.twitchlink.utils.OnChannelPoint;
+import fr.azrotho.twitchlink.event.OnChannelPoint;
+import fr.azrotho.twitchlink.runnable.CustomRewardsRunnable;
+import fr.azrotho.twitchlink.runnable.CommandsRunnable;
 
 public class TwitchLink extends JavaPlugin {
     private static TwitchClient twitchClient;
     private static TwitchLink instance;
     public static String tag = "§f§l[§5TwitchLink§f§l] §f";
+    public static CustomRewards customRewards = new CustomRewards();
 
     @Override
     public void onEnable() {
@@ -38,8 +41,11 @@ public class TwitchLink extends JavaPlugin {
 
         getCommand("debug").setExecutor(new DebugCommand());
 
-        CommandRunnable commandRunnable = new CommandRunnable();
+        CommandsRunnable commandRunnable = new CommandsRunnable();
         commandRunnable.runTaskTimer(this, 0, 0);
+
+        CustomRewardsRunnable customRewardsRunnable = new CustomRewardsRunnable();
+        customRewardsRunnable.runTaskTimer(this, 0, 0);
     }
 
     public static TwitchClient getTwitchClient() {

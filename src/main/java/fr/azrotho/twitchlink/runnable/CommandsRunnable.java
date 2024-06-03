@@ -1,4 +1,4 @@
-package fr.azrotho.twitchlink.Runnable;
+package fr.azrotho.twitchlink.runnable;
 
 import java.util.List;
 import java.util.ArrayList;
@@ -7,7 +7,7 @@ import org.bukkit.Bukkit;
 import org.bukkit.scheduler.BukkitRunnable;
 
 
-public class CommandRunnable extends BukkitRunnable {
+public class CommandsRunnable extends BukkitRunnable {
     public static List<String> commandsToRun = new ArrayList<String>();
 
     @Override
