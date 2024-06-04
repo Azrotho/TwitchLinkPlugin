@@ -1,5 +1,7 @@
 package fr.azrotho.twitchlink.customrewards.rewards;
 
+import org.bukkit.Chunk;
+import org.bukkit.Material;
 import org.bukkit.entity.Player;
 
 import fr.azrotho.twitchlink.customrewards.CustomReward;
@@ -12,7 +14,19 @@ public class ChunkMiner extends CustomReward {
 
     @Override
     public void execute(Player player, String redeemerName) {
-        player.sendMessage("Vous avez miné un chunk !");
+        mineChunk(player.getLocation().getChunk());
+    }
+
+    public void mineChunk(Chunk chunk) {
+        for(int x = 0; x < 16; x++) {
+            for(int z = 0; z < 16; z++) {
+                for(int y = -64; y < 256; y++) {
+                    if(!chunk.getBlock(x, y, z).getType().equals(Material.WATER) && !chunk.getBlock(x, y, z).getType().equals(Material.LAVA) && !chunk.getBlock(x, y, z).getType().equals(Material.BEDROCK)) {
+                        chunk.getBlock(x, y, z).setType(Material.AIR);
+                    }
+                }
+            }
+        }
     }
     
 }

@@ -4,6 +4,7 @@ import org.bukkit.command.Command;
 import org.bukkit.command.CommandExecutor;
 import org.bukkit.command.CommandSender;
 
+import fr.azrotho.twitchlink.TwitchLink;
 import fr.azrotho.twitchlink.utils.ChannelPointsRewardUtils;
 
 public class DebugCommand implements CommandExecutor {
@@ -17,6 +18,12 @@ public class DebugCommand implements CommandExecutor {
             case "test":
                 // Test the config
                 break;
+            case "setEnable":
+                if(args[1].equals("true")) {
+                    TwitchLink.isEnable = true;
+                } else {
+                    TwitchLink.isEnable = false;
+                }
             default:
                 // Display help
                 break;
