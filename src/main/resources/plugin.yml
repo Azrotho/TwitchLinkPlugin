@@ -1,5 +1,6 @@
 name: TwitchLink
 author: Azrotho
+api-version: 1.20
 version: 1.0
 main: fr.azrotho.twitchlink.TwitchLink
 commands:

@@ -5,12 +5,16 @@ import java.util.ArrayList;
 import org.bukkit.entity.Player;
 
 import fr.azrotho.twitchlink.customrewards.rewards.ChunkMiner;
+import fr.azrotho.twitchlink.customrewards.rewards.ReplaceGappWithASuspiciousStew;
+import fr.azrotho.twitchlink.customrewards.rewards.ShuffleInventory;
 
 public class CustomRewards {
     private final ArrayList<CustomReward> rewards = new ArrayList<>();
 
     public CustomRewards() {
         rewards.add(new ChunkMiner());
+        rewards.add(new ShuffleInventory());
+        rewards.add(new ReplaceGappWithASuspiciousStew());
     }
 
     public Boolean rewardExist(String title) {
