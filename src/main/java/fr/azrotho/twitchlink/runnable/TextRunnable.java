@@ -15,7 +15,7 @@ public class TextRunnable extends BukkitRunnable {
         for(Player player : Bukkit.getOnlinePlayers()) {
             if(TwitchLink.isEnable) {
                 if(tickWithoutUpdate == 0) {
-                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§5§lPoints de chaîne dépensé: §f" + ((formatLong(TwitchLink.numberChannelPointsSpent)).replace(" ", "."))));
+                player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent("§5§lPoints de chaîne dépensés: §f" + ((formatLong(TwitchLink.numberChannelPointsSpent)).replace(" ", "."))));
                 } else {
                     tickWithoutUpdate--;
                 }  
