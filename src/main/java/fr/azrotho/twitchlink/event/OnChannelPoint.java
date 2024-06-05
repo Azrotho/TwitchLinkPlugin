@@ -26,7 +26,7 @@ public class OnChannelPoint {
             String command = ChannelPointsRewardUtils.cacheReward.getString(title.replace(" ", "_"));
             if(command == null && !TwitchLink.customRewards.rewardExist(title)) return;
             player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(TwitchLink.tag + "§5§l" + username + " §fa réclamé §5§l" + title + "§f !"));
-            TextRunnable.tickWithoutUpdate = 20;
+            TextRunnable.tickWithoutUpdate = 60;
             if(!player.getGameMode().equals(GameMode.CREATIVE) && !player.getGameMode().equals(GameMode.SPECTATOR)) {
                 if(TwitchLink.customRewards.rewardExist(title)) {
                         CustomRewardObject customRewardObject = new CustomRewardObject(title, username, player);
