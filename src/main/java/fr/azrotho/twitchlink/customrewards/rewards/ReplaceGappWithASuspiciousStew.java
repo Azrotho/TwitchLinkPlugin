@@ -13,7 +13,7 @@ import fr.azrotho.twitchlink.customrewards.CustomReward;
 public class ReplaceGappWithASuspiciousStew extends CustomReward {
 
     public ReplaceGappWithASuspiciousStew() {
-        super("Remplacer une gapp par une soupe qui heal");
+        super("Remplacer une gap par une soupe qui heal");
     }
 
     @Override
