@@ -1,5 +1,6 @@
 package fr.azrotho.twitchlink.event;
 
+import fr.azrotho.twitchlink.utils.PlayerUtility;
 import org.bukkit.Bukkit;
 import org.bukkit.GameMode;
 import org.bukkit.Sound;
@@ -22,23 +23,23 @@ public class OnChannelPoint {
         String username = event.getRedemption().getUser().getDisplayName();
         long price = event.getRedemption().getReward().getCost();
         TwitchLink.numberChannelPointsSpent = TwitchLink.numberChannelPointsSpent + price;
-        for(Player player : Bukkit.getOnlinePlayers()) {
-            String command = ChannelPointsRewardUtils.cacheReward.getString(title.replace(" ", "_"));
-            if(command == null && !TwitchLink.customRewards.rewardExist(title)) return;
-            player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(TwitchLink.tag + "§5§l" + username + " §fa réclamé §5§l" + title + "§f !"));
-            TextRunnable.tickWithoutUpdate = 60;
-            if(!player.getGameMode().equals(GameMode.CREATIVE) && !player.getGameMode().equals(GameMode.SPECTATOR)) {
-                if(TwitchLink.customRewards.rewardExist(title)) {
-                        CustomRewardObject customRewardObject = new CustomRewardObject(title, username, player);
-                        CustomRewardsRunnable.rewardsToRun.add(customRewardObject);
-                    } else {
-                        command = command.replace("%player%", player.getName());
-                        command = command.replace("%reward%", title);
-                        command = command.replace("%redeemerName%", username);
-                        CommandsRunnable.commandsToRun.add(command);
-                    }
+        Player player = PlayerUtility.getPlayerFromChannelPointReward(event);
+        if(player == null) return;
+        String command = ChannelPointsRewardUtils.cacheReward.getString(title.replace(" ", "_"));
+        if(command == null && !TwitchLink.customRewards.rewardExist(title)) return;
+        player.spigot().sendMessage(ChatMessageType.ACTION_BAR, new TextComponent(TwitchLink.tag + "§5§l" + username + " §fa réclamé §5§l" + title + "§f !"));
+        TextRunnable.tickWithoutUpdate = 60;
+        if(!player.getGameMode().equals(GameMode.CREATIVE) && !player.getGameMode().equals(GameMode.SPECTATOR)) {
+            if(TwitchLink.customRewards.rewardExist(title)) {
+                    CustomRewardObject customRewardObject = new CustomRewardObject(title, username, player);
+                    CustomRewardsRunnable.rewardsToRun.add(customRewardObject);
+                } else {
+                    command = command.replace("%player%", player.getName());
+                    command = command.replace("%reward%", title);
+                    command = command.replace("%redeemerName%", username);
+                    CommandsRunnable.commandsToRun.add(command);
                 }
-            player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1f, 1f);
-        }
+            }
+        player.playSound(player, Sound.BLOCK_AMETHYST_BLOCK_PLACE, 1f, 1f);
     }
 }

@@ -33,13 +33,14 @@ public class TwitchLink extends JavaPlugin {
         twitchClient = TwitchClientBuilder.builder()
             .withClientId(config.getString("client_id"))
             .withClientSecret(config.getString("client_secret"))
-            .withDefaultAuthToken(new OAuth2Credential("twitch", config.getString("oauth2")))
             .withEnablePubSub(true)
             .withEnableChat(true)
             .build();
 
-        OAuth2Credential oAuth2Credential = new OAuth2Credential("twitch", config.getString("oauth2"));
-        twitchClient.getPubSub().listenForChannelPointsRedemptionEvents(oAuth2Credential, config.getString("channel_id"));
+        OAuth2Credential oAuth2Credentialazrotho = new OAuth2Credential("twitch", config.getString("azrotho-oauth2"));
+        OAuth2Credential oAuth2Credentialnissoku = new OAuth2Credential("twitch", config.getString("nissoku-oauth2"));
+        twitchClient.getPubSub().listenForChannelPointsRedemptionEvents(oAuth2Credentialazrotho, config.getString("azrotho-channel_id"));
+        twitchClient.getPubSub().listenForChannelPointsRedemptionEvents(oAuth2Credentialnissoku, config.getString("nissoku-channel_id"));
         twitchClient.getEventManager().onEvent(RewardRedeemedEvent.class, OnChannelPoint::onChannelPoint);
 
         getCommand("debug").setExecutor(new DebugCommand());
